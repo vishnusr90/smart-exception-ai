@@ -16,10 +16,8 @@ public class AiController {
     private AiService aiService;
 
     @PostMapping("/troubleshoot")
-    public String enrichException(@RequestBody ExceptionMessage exceptionMessage) {
-        return aiService
-                .getResolutionSteps(exceptionMessage.getMessage());
-        // .forEach(doc -> System.out.println(doc));
+    public String troubleshoot(@RequestBody ExceptionMessage exceptionMessage) {
+        return aiService.getResolutionSteps(exceptionMessage.getMessage());
     }
 
 }
