@@ -15,11 +15,11 @@ public class AiController {
     @Autowired
     private AiService aiService;
 
-    @PostMapping("/enrich")
-    public void enrichException(@RequestBody ExceptionMessage exceptionMessage) {
-        aiService
-                .getResolutionSteps(exceptionMessage.getMessage())
-                .forEach(doc -> System.out.println(doc));
+    @PostMapping("/troubleshoot")
+    public String enrichException(@RequestBody ExceptionMessage exceptionMessage) {
+        return aiService
+                .getResolutionSteps(exceptionMessage.getMessage());
+        // .forEach(doc -> System.out.println(doc));
     }
 
 }
