@@ -1,0 +1,7 @@
+
+POST http://localhost:8080/ai/enrich
+Content-Type: application/json
+
+{
+    "message": "scoop-schedule-exception"    
+}

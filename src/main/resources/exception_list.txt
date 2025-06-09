@@ -1,0 +1,8 @@
+Below is the list of some exceptions and their resolution steps.
+
+1. scoop-schedule-exception is an exception which occurs during scooping process.
+
+Steps to resolve:
+    a) Login into exception-dashboard ui.
+    b) Search the graph name: scoopy-graph
+    c) Click on it and select replay.

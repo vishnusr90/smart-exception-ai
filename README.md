@@ -23,9 +23,14 @@ Smart Exception AI is an intelligent exception handling solution designed to enh
 ## Getting Started
 
 1. Clone this repository.
-2. Set up Ollama with the Llama model.
-3. Integrate Smart Exception AI into your application.
-4. Configure notification settings.
+2. Set up Ollama with the Llama mode and run the command
+   `ollama run llama3.2`
+3. Run docker desktop
+4. Run the command
+   `docker run -it --rm --name chroma -p 8000:8000 ghcr.io/chroma-core/chroma:0.4.15`
+   Hit http://localhost:8000/api/v2 to check if it is up and running
+5. Integrate Smart Exception AI into your application.
+6. Configure notification settings.
 
 ## License
 
