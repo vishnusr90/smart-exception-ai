@@ -1,7 +1,7 @@
 
-POST http://localhost:8080/ai/enrich
+POST http://localhost:8080/ai/troubleshoot
 Content-Type: application/json
 
 {
-    "message": "scoop-schedule-exception"    
+    "message": "Caused due to trigger-exception"    
 }

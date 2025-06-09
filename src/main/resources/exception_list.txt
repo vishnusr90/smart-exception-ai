@@ -1,8 +1,19 @@
-Below is the list of some exceptions and their resolution steps.
+### FAQ on exceptions
 
-1. scoop-schedule-exception is an exception which occurs during scooping process.
-
-Steps to resolve:
+1. **scoop-schedule-exception**
+    - This exception occurs during scooping process of order management. This happens right after order has been created and before it is sent to back office.
+    - Steps to resolve are as below
     a) Login into exception-dashboard ui.
     b) Search the graph name: scoopy-graph
     c) Click on it and select replay.
+    Team to be contacted: efire London Team
+    Email: efire-london@gmail.com
+
+2. **trigger-exception**
+    - This exception occurs during the triggering process which is right after the order completion stage. 
+    - Steps to resolve this exception are as below
+    a) Login to UI dashboard.
+    b) Search for trigger graph.
+    c) Click on it and select replay.
+    Team to be contacted: API  Team
+    Email: api-dev@gmail.com

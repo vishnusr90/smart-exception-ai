@@ -20,7 +20,7 @@ public class DataInitiliazer {
 
     @PostConstruct
     public void init() {
-        System.out.println("Initializing data...");
+        System.out.println("Initializing exception list data...");
 
         TextReader exceptionListReader = new TextReader(new ClassPathResource("/exception_list.txt"));
         TokenTextSplitter tokenTextSplitter = new TokenTextSplitter(100, 100, 5,
