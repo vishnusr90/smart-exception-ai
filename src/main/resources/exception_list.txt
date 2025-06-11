@@ -1,19 +1,38 @@
-### FAQ on exceptions
+### Below is the list of some common exceptions that happen during payment processing.
 
-1. **scoop-schedule-exception**
-    - This exception occurs during scooping process of order management. This happens right after order has been created and before it is sent to back office.
-    - Steps to resolve are as below
-    a) Login into exception-dashboard ui.
-    b) Search the graph name: scoopy-graph
-    c) Click on it and select replay.
-    Team to be contacted: efire London Team
-    Email: efire-london@gmail.com
 
-2. **trigger-exception**
-    - This exception occurs during the triggering process which is right after the order completion stage. 
-    - Steps to resolve this exception are as below
-    a) Login to UI dashboard.
-    b) Search for trigger graph.
-    c) Click on it and select replay.
-    Team to be contacted: API  Team
-    Email: api-dev@gmail.com
+1. Message: **payment-scoop**
+   Tag: **payment scoop event**
+
+    *Summary*:
+    This is a new capability added into shopify that will help to extract a payment to downstream at scheduled interval of time.
+    Application needs to insert a record in specified format in payment_scoop_traking_record which is being read by event-graph
+    per minute to extract the payment.
+
+    *Overview*:
+        Payment scoop extraction is compirsed of two steps:
+        - payment-scoop-schedule: event group describes polling frequency
+        - payment-scoop-extract: event graph describes the payment extraction process
+
+        payment-scoop-schedule:
+        - Define (api-payment, payment-scoop)
+        - Schedule (api-payment, payment-scoop) -> (UNRECOVERABLE: 0 */1 * * * *;America?New_York)
+
+        payment-scoop-extract:
+        - Define (api-payemnt, payment-scoop-extract-trigger) -> (api-payment, enrich-payment-instructions-count-and-amount) 
+            ->(api-payment, enrich-payment-instructions-event-mapping) -> (file-import, pre-extract) -> (file-import, extract)
+
+    *Mitigation Steps for resolution of issues*:
+        - Login to event-ui: http://localhost:8080/event-ui/dashboard.
+        - Navigate to event hierarchy section in "Events" tab and click it. Locate "sre-operations" -> sre-force-payment-scoop ->
+            force-process-payment-scoop event.
+        - Right click on force-process-payment-scoop and click on "Force Start Event".
+        - Inspect the payment_scoop_tracking_record table for new entries. It should have status column set to "NEW".
+        - Alternatively this can be spotted from event-ui.
+            - Search for event instances of force-process-scoop-record from event ui within last 5 minutes.
+            - Locate processing instruction ids from "process instructions" tab and search in event-ui screen.
+            - payment-scoop-extract event graph can be located for payment group.
+
+    *Team to be contacted*: API  Team
+
+    *Email Address*: api-dev@gmail.com
