@@ -17,7 +17,7 @@ public class AiController {
 
     @PostMapping("/troubleshoot")
     public String troubleshoot(@RequestBody ExceptionMessage exceptionMessage) {
-        return aiService.getResolutionSteps(exceptionMessage.getMessage());
+        return aiService.getResolutionSteps(exceptionMessage);
     }
 
 }

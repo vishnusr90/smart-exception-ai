@@ -1,10 +1,8 @@
 package com.smart.expection.ai.smart_exception.services;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.angus.mail.iap.Response;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.prompt.Prompt;
