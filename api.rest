@@ -3,6 +3,6 @@ POST http://localhost:8080/ai/troubleshoot
 Content-Type: application/json
 
 {
-    "message": "Caused due to payment-scoop exception",
+    "message": "payment-scoop",
     "eventTag": "payment scoop event"  
 }
