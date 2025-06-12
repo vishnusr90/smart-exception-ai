@@ -36,6 +36,8 @@ Smart Exception AI is an intelligent exception handling solution designed to enh
 5. Integrate Smart Exception AI into your application.
 6. Configure notification settings.
 
+![alt text](Response.png)
+
 ## License
 
 See [LICENSE](./LICENSE) for details.
