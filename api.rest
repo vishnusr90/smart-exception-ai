@@ -4,5 +4,9 @@ Content-Type: application/json
 
 {
     "message": "payment-scoop",
-    "eventTag": "payment scoop event"  
+    "eventTag": "payment scoop event" ,
+    "clientId": "12345",
+    "refNumber": "ref-12345",
+    "amount": "100.00",
+    "currency": "USD"
 }

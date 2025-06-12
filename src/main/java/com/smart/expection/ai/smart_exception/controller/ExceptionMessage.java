@@ -5,6 +5,10 @@ import lombok.NonNull;
 
 @Getter
 public class ExceptionMessage {
+    String clientId;
+    String refNumber;
+    String amount;
+    String currency;
     @NonNull
     private String message;
     private String eventTag;

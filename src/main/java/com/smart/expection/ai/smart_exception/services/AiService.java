@@ -47,10 +47,11 @@ public class AiService {
                 Prompt prompt = new PromptTemplate(
                                 """
                                                 As a professional document parser, search the vector database for documents with some keywords mentioned
-                                                in the exception message {message} and tag {tag}.
+                                                in the exception message {message} and {tag}.
 
-                                                If there are no relevant documents that matches the exception message, the just return the response as
-                                                "No relevant information found for this exception." Strictly do not return another other response/information.
+                                                If there are no relevant documents that matches the exception message and tag, then just return the response as
+                                                "No relevant information found for this exception."
+                                                Strictly do not return another other response/information.
 
                                                 If there are relevant information then return the response strictly under the below format. Do not return any fictional data and
                                                 do not provide any context information section.
@@ -60,6 +61,11 @@ public class AiService {
                                                 Hi All,
 
                                                 An issue has occured in processing a payment.
+
+                                                Payment Details:
+                                                Client ID: {clientId}
+                                                Reference Number: {refNumber}
+                                                Amount: {currency} {amount}
 
                                                 Team name: [Specify the team responsible for handling the issue]
 
@@ -71,7 +77,11 @@ public class AiService {
                                                 """)
                                 .create(Map.of(
                                                 "message", exceptionMessage.getMessage(),
-                                                "tag", exceptionMessage.getEventTag()));
+                                                "tag", exceptionMessage.getEventTag(),
+                                                "clientId", exceptionMessage.getClientId(),
+                                                "refNumber", exceptionMessage.getRefNumber(),
+                                                "amount", exceptionMessage.getAmount(),
+                                                "currency", exceptionMessage.getCurrency()));
                 return chatClient.prompt()
                                 .user(prompt.getContents())
                                 .call()
